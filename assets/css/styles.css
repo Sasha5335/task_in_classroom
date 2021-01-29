@@ -1,0 +1,153 @@
+@import './reset.css';
+
+:root {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.section-items {
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wrapper-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.person {
+  max-width: 270px;
+  margin: 50px;
+}
+
+.person-content {
+  margin-top: 20px;
+}
+
+.person h4 {
+  font-weight: 400;
+}
+
+.person h5 {
+  color: #e84545;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 22.4px;
+  color: #6c7279;
+}
+
+.social-icons {
+  display: flex;
+  margin-top: 30px;
+}
+
+.social-icons a {
+  display: block;
+  margin-right: 15px;
+}
+
+.social-icons a img {
+  width: 30px;
+  opacity: 0.4;
+  transition: all .3s;
+}
+
+.social-icons a img:hover {
+  opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+/* .clearfix:before {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+} */
+
+
+
+
+
+
+
+
+
+.cardsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.cardWrapper {
+  display: flex;
+  border: 4px solid;
+  margin: 2rem 1rem;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 320px;
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: inherit;
+  height: 320px;
+}
+
+.initials {
+  font-size: 2rem;
+  color: white;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardImage {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cardName {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.cardName:empty::after,
+.initials:empty::after {
+  content: "Unknown";
+}
