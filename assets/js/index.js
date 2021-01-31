@@ -79,7 +79,7 @@ function createLink(place) {
   initialsLinkIcon.classList.add('fa-facebook');
   createLink.append(initialsLinkIcon);
 
-  return socialLink;
+  return socialLink
 }
 
 
