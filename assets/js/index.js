@@ -7,10 +7,9 @@ cardContainer.append(...cards);
 
 function createPlaceCards(place) {
 	const h4 = createElement('h4', { classNames: ['card-name'] }, document.createTextNode(`${place.firstName} ${place.lastName}` || ''));
-	const h5 = createElement('h5', { classNames: ['card-role'] }, document.createTextNode('☆' || ''));
+	const h5 = createElement('h5', { classNames: ['card-role'] }, document.createTextNode('★' || ''));
 	const p = createElement('p', { classNames: ['card-description'] }, document.createTextNode('Fusce dapibus, tellus ac cursus commodo, mauris condimentum nibh, utfermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.'));
 	const a = createElement('a', { classNames: ['social-link'] });
-	const li = createElement('li', { classNames: ['social-icon'], a });
 
 
 
@@ -26,7 +25,7 @@ function createPlaceCards(place) {
 	const personContentSocial = createElement(
 		'ul',
 		{ classNames: ['social-icons'] },
-		li
+		createLink(place)
 	);
 
 	return createElement('div', { classNames: ['card-person'] }, personContent, personContentSocial);
@@ -61,6 +60,26 @@ function createImage({ firstName, profilePicture, id }, { className }) {
 	img.addEventListener('error', handleImageError);
 	img.addEventListener('load', handleImageLoad);
 	return img;
+}
+
+
+function createLink(place) {
+	const { contacts } = place;
+
+	const socialLink = document.createElement('li');
+	socialLink.classList.add('card-social-link');
+
+	const createLink = document.createElement('a');
+	createLink.setAttribute('href', place.contacts[0]);
+	createLink.classList.add('card-link');
+	socialLink.append(createLink);
+
+	const initialsLinkIcon = document.createElement('span');
+	initialsLinkIcon.classList.add('fa');
+	initialsLinkIcon.classList.add('fa-facebook');
+	createLink.append(initialsLinkIcon);
+
+	return socialLink;
 }
 
 

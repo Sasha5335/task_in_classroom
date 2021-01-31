@@ -1,97 +1,97 @@
 @import './reset.css';
 
 :root {
-   font-family: sans-serif;
-   font-size: 18px;
+	font-family: sans-serif;
+	font-size: 18px;
 }
 
 * {
-   box-sizing: border-box;
-   /* background-color: #f8f8f8; */
+	box-sizing: border-box;
+	/* background-color: #f8f8f8; */
 }
 
 .section-items {
-   width: 100%;
+	width: 100%;
 }
 
 .container {
-   max-width: 1200px;
-   margin: 0 auto;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 .cards-wrapper {
-   display: flex;
-   justify-content: space-around;
-   flex-wrap: wrap;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .card-person {
-   max-width: 270px;
-   margin: 50px;
+	max-width: 270px;
+	margin: 50px;
 }
 
 .person-content {
-   width: 320px;
-   position: relative;
-   display: flex;
-   margin-top: 20px;
-   text-align: center;
+	width: 320px;
+	position: relative;
+	display: flex;
+	margin-top: 20px;
+	text-align: center;
 }
 
 .card-img-wrapper {
-   width: 270px;
-   height: 320px;
-   position: relative;
+	width: 270px;
+	height: 320px;
+	position: relative;
 }
 
 .card-initials {
-   height: inherit;
-   display: flex;
-   justify-content: center;
-   font-size: 50px;
-   color: white;
-   align-items: center;
-   background-color: inherit;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	font-size: 50px;
+	color: white;
+	align-items: center;
+	background-color: inherit;
 }
 
 .card-img {
-   width: inherit;
-   height: inherit;
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   object-fit: cover;
-   object-position: center;
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	object-fit: cover;
+	object-position: center;
 }
 
 .card-name {
-   margin: 10px 0;
-   font-size: 22px;
-   color: #2d3033;
-   font-weight: 400;
-   font-weight: 400;
+	margin: 10px 0;
+	font-size: 22px;
+	color: #2d3033;
+	font-weight: 400;
+	font-weight: 400;
 }
 
 .card-role {
-   margin-bottom: 20px;
-   font-size: 30px;
-   font-weight: 400;
-   text-transform: uppercase;
-   color: gold;
+	margin-bottom: 20px;
+	font-size: 30px;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: gold;
 }
 
 .card-description {
-   font-size: 14px;
-   line-height: 22.4px;
-   color: #6c7279;
+	font-size: 14px;
+	line-height: 22.4px;
+	color: #6c7279;
 }
 
 .social-icons {
 	display: flex;
-  margin-top: 30px;
-} 
+	margin-top: 30px;
+}
 
 .social-icons a {
 	display: block;
@@ -105,13 +105,13 @@
 	border: 1px solid #e8ecee;
 	color: #c6cacc;
 	transition: all 0.3s;
-} 
+}
 
 .social-icons a:hover {
-  background-color: #36C1EB;
-  border-color: #36C1EB;
-  color: #fff;
-} 
+	background-color: #36C1EB;
+	border-color: #36C1EB;
+	color: #fff;
+}
 
 
 
