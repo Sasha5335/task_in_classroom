@@ -1,14 +1,12 @@
 'use strict';
 
-
-
 const cardContainer = document.getElementById('card');
 const cards = responseData.map((place) => createPlaceCards(place));
 cardContainer.append(...cards);
 
 
 function createPlaceCards(place) {
-  const h4 = createElement('h4', { classNames: ['card-name'] }, document.createTextNode(`${place.firstName} ${place.lastName}` || ''));
+  const h4 = createElement('h4', { classNames: ['card-name'] }, document.createTextNode(`${place.firstName} ${place.lastName}` || 'Unknown'));
   const h5 = createElement('h5', { classNames: ['card-role'] }, document.createTextNode('★' || ''));
   const p = createElement('p', { classNames: ['card-description'] }, document.createTextNode('Fusce dapibus, tellus ac cursus commodo, mauris condimentum nibh, utfermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.'));
 
@@ -32,32 +30,35 @@ function createPlaceCards(place) {
 
 
 function createImageWrapper(place) {
-  const { firstName, id } = place;
+  const { firstName, lastName, id } = place;
 
   const imageWrapper = document.createElement('div');
   imageWrapper.setAttribute('id', `wrapper${id}`);
   imageWrapper.classList.add('card-img-wrapper');
-  imageWrapper.style.backgroundColor = stringToColour(firstName);
+  imageWrapper.style.backgroundColor = stringToColour(firstName.trim());
 
   const initialsNamePerson = document.createElement('div');
   initialsNamePerson.classList.add('card-initials');
-  initialsNamePerson.append(document.createTextNode(firstName.trim().charAt(0) || ''));
+  initialsNamePerson.append(document.createTextNode(`${firstName.trim().charAt(0)}${lastName.trim().charAt(0)}` || ''));
 
   createImage(place, { className: 'card-img' });
 
   imageWrapper.append(initialsNamePerson);
+
   return imageWrapper;
 }
 
 
 function createImage({ firstName, lastName, profilePicture, id }, { className }) {
   const img = document.createElement('img');
+
   img.classList.add(className);
   img.dataset.id = id;
   img.setAttribute('alt', `${firstName} ${lastName}`);
   img.setAttribute('src', profilePicture);
   img.addEventListener('error', handleImageError);
   img.addEventListener('load', handleImageLoad);
+
   return img;
 }
 
@@ -66,7 +67,7 @@ function createLink({ contacts }) {
   const socialLinks = document.createElement('ul');
   socialLinks.classList.add('social-icons');
 
-  for (const [attrKey, attrValue] of Object.entries(contacts)) {
+  for (const attrValue of contacts) {
     const socialLink = document.createElement('li');
     socialLinks.append(socialLink);
 
@@ -81,6 +82,7 @@ function createLink({ contacts }) {
     createLink.append(initialsLinkIcon);
 
   }
+
   return socialLinks;
 }
 
@@ -127,6 +129,7 @@ function stringToColour(str) {
     let value = (hash >> (i * 8)) & 0xff;
     colour += ('00' + value.toString(16)).substr(-2);
   }
+
   return colour;
 }
 
@@ -143,15 +146,12 @@ function stringToColour(str) {
  * @param {Node[]} children
  * @return {HTMLElement}
  */
-function createElement(type, { classNames = [], attributes = {}, onClick = null } = {}, ...children) {
+function createElement(type, { classNames = [], onClick = null } = {}, ...children) {
   const elem = document.createElement(type);
+
   elem.classList.add(...classNames);
-
-  for (const [attrName, attrValue] of Object.entries(attributes)) {
-    elem.setAttribute(attrName, attrValue);
-  }
-
   elem.onclick = onClick;
   elem.append(...children);
+
   return elem;
 }
