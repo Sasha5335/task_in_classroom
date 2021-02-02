@@ -1,12 +1,18 @@
 'use strict';
 
+const foundIcon = new Map()
+  .set('www.facebook.com', 'fa-facebook')
+  .set('twitter.com', 'fa-twitter')
+  .set('www.instagram.com', 'fa-instagram');
+
+
 const cardContainer = document.getElementById('card');
 const cards = responseData.map((place) => createPlaceCards(place));
 cardContainer.append(...cards);
 
 
 function createPlaceCards(place) {
-  const h4 = createElement('h4', { classNames: ['card-name'] }, document.createTextNode(`${place.firstName} ${place.lastName}` || 'Unknown'));
+  const h4 = createElement('h4', { classNames: ['card-name'] }, document.createTextNode(`${place.firstName} ${place.lastName}`.trim() || 'Unknown'));
   const h5 = createElement('h5', { classNames: ['card-role'] }, document.createTextNode('★' || ''));
   const p = createElement('p', { classNames: ['card-description'] }, document.createTextNode('Fusce dapibus, tellus ac cursus commodo, mauris condimentum nibh, utfermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.'));
 
@@ -64,11 +70,11 @@ function createImage({ firstName, lastName, profilePicture, id }, { className })
 
 
 function createLink({ contacts }) {
-  const socialLinks = document.createElement('ul');
-  socialLinks.classList.add('social-icons');
+  const socialLinks = createElement('ul', { classNames: ['social-icons'] });
 
   for (const attrValue of contacts) {
-    const socialLink = document.createElement('li');
+
+    const socialLink = createElement('li');
     socialLinks.append(socialLink);
 
     const createLink = document.createElement('a');
@@ -78,7 +84,7 @@ function createLink({ contacts }) {
 
     const initialsLinkIcon = document.createElement('span');
     initialsLinkIcon.classList.add('fa');
-    initialsLinkIcon.classList.add(foundUrl(attrValue));
+    initialsLinkIcon.classList.add(createLinks(attrValue));
     createLink.append(initialsLinkIcon);
 
   }
@@ -87,13 +93,8 @@ function createLink({ contacts }) {
 }
 
 
-function foundUrl(link) {
+function createLinks(link) {
   const userLink = new URL(link);
-
-  const foundIcon = new Map()
-    .set('www.facebook.com', 'fa-facebook')
-    .set('twitter.com', 'fa-twitter')
-    .set('www.instagram.com', 'fa-instagram');
 
   return foundIcon.get(userLink.hostname);
 }
