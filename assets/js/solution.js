@@ -1,8 +1,14 @@
 'use strict';
-
 const cardContainer = document.getElementById('card');
-const cards = responseData.map((place) => createPlaceCards(place));
-cardContainer.append(...cards);
+
+fetch('http://192.168.1.148:3000/users')
+  .then((responsive) => responsive.json())
+  .then((data) => {
+    const cards = data.map((place) => createPlaceCards(place));
+    cardContainer.append(...cards);
+  })
+
+
 
 
 function createPlaceCards(place) {
